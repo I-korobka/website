@@ -1,0 +1,69 @@
+@font-face {
+	font-family: 'KKBahn';
+	src: url('https://data.reale-korobka.com/fonts/KKBahn.ttf') format('truetype');
+	/*
+	src: url('../KKBahn.ttf') format('truetype');
+	*/
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--step-time: 1s;
+}
+
+body {
+	background-color: #e52629;
+	margin: 0;
+	overflow: hidden;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.screen-wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	justify-content: center;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	height: 7vh;
+	width: 100%;
+	overflow: visible;
+}
+
+.loop {
+	display: flex;
+	white-space: nowrap;
+	width: max-content;
+	animation: scroll-right 180s linear infinite;
+	animation-delay: calc(var(--step-time) * var(--i) * -1);
+
+	will-change: transform;
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+span {
+	font-family: 'KKBahn', sans-serif;
+	color: #ffffff;
+	font-size: 10vh;
+	font-weight: 900;
+	line-height: 0.8;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transform: rotate(0.03deg);
+}
+
+@keyframes scroll-right {
+	0% { transform: translate3d(-50%, 0, 0); }
+	100% { transform: translate3d(0%, 0, 0); }
+}
